@@ -17,5 +17,72 @@
 </head>
 <body>
     <div class="content-box"></div>
+    <a href="#">#</a>
+    <a href="//qq.com">//qq.com</a>
+    <a href="http://qq.com" id='aElements'> http://qq.com</a>
+    <a href="javascript:;">javascript:;</a>
+    <a href="javascript:alert(1);">javascript:alert(1);</a>
+
+    <form action="" method="GET">
+        <label>用户名<input type="text" name="username"></label>
+        <label>密码<input type="password" name="password"></label>
+        <!-- 上面两句等价于下面两句 label和input用for和id来相关联的 -->
+        <!-- <label for="uuu">用户名</label><input id="uuu" type="text" name="username"> -->
+        <!-- <label for="ppp">密码</label><input id="ppp" type="password" name="password"> -->
+        <label> <input type="checkbox" name="cbox" value="yes"> 记住密码</label>
+        <label><input type="radio" name="rad" value="yes">yes</label>
+        <label><input type="radio" name="rad" value="no">no</label>
+        <select name="group">
+            <option value="1">yi</option>
+            <option value="2">er</option>
+            <option value="3" disabled>san</option>
+            <option value="4" selected>si</option>
+        </select>
+        <select name="group" multiple>
+            <option value="1">yi</option>
+            <option value="2">er</option>
+            <option value="3" disabled>san</option>
+            <option value="4" selected>si</option>
+        </select>
+        <br>
+        <!-- textarea 不设置resize 是可以拉扯宽高从而导致未知bug -->
+        <!-- <textarea name="favior" id="" cols="30" rows="10"></textarea> -->
+        <textarea style="resize:none;" name="hobby/favor" cols="30" rows="10"></textarea>
+        <input type="submit" value="提交">
+    </form>
+
+    <!-- tr表示行(table row) th表示标题(table head) td表示内容(table data) -->
+    <table border="1">
+        <colgroup>
+            <col width=100>
+            <col width=50>
+            <col width=50>
+            <col bgcolor=red width=100>
+        </colgroup>
+        <thead>
+            <tr>
+                <th> / </th> <th>姓名</th> <th>年龄</th> <th>工资</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th></th> <td>jobin</td> <td>18</td> <td>20,000</td>
+            </tr>
+            <tr>
+                <th></th> <td>dabing</td> <td>18</td> <td>100,000</td>
+            </tr>
+            <tr>
+                <th>平均</th> <td></td> <td></td> <td>50,000</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>总共</th> <td></td> <td></td> <td>120,000</td>
+            </tr>
+        </tfoot>
+
+    </table>
+  
 </body>
 </html>

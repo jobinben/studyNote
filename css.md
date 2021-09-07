@@ -49,3 +49,6 @@
     这个最大的好处就是你这个盒子有好几个，而且有不同的padding和border值，解决这个的最好的方法就是给盒子设置border-box
 
 
+# block 和 inline
+- block会另起一行
+- inline不会另起一行
