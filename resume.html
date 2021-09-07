@@ -6,18 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
+
+    <style>
+        /* 当子元素设置了float，就要给父元素加上下面这个样式解决css float的bug */
+        .clearfix::after{ /*解决子元素float造成的bug，导致其他元素也浮动上来*/
+            content: '';
+            display: block;
+            clear:both;
+        }
+        .navTabs{
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+        .navTabs > li {
+            float: left;
+            
+        }
+        .navTabs > li > a {
+            text-decoration: none;
+            margin: 0 17px 0 17px;
+            color: #BBB;
+            padding: 5px 0 5px 0;
+            display: block; /*a标签和li标签高度不一致，因为a标签是inline元素（内联），把他修改为block元素（块级）*/
+            border-bottom: 3px solid transparent;
+        }
+        .navTabs > li > a:hover{
+            border-bottom: 3px solid #e06567;
+
+        }
+    </style>
 </head>
 
 <body>
-    <div class="toNavBar">
-        <img src="#" alt="logo" />
-        <nav>
-            <ul>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
+    <div class="topNavBar clearfix">
+        <a href="#" alt="logo" class="logo" style="float: left;">
+            <span class="rs">RS</span>
+            <span class="card">card</span>
+        </a>
+        <nav class="topNav" style="float: right;">
+            <ul class="navTabs clearfix">
+                <li><a href="">关于</a></li>
+                <li><a href="">技能</a></li>
+                <li><a href="">作品</a></li>
+                <li><a href="">联系</a></li>
+                <li><a href="">博客</a></li>
             </ul>
         </nav>
     </div>
@@ -26,7 +59,7 @@
 
     <main>
         
-        <div class="card">
+        <div class="mainCard">
             <div class="picture">
                 <img src="" alt="头像">
             </div>
