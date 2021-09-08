@@ -49,6 +49,36 @@
     这个最大的好处就是你这个盒子有好几个，而且有不同的padding和border值，解决这个的最好的方法就是给盒子设置border-box
 
 
-# block 和 inline
-- block会另起一行
-- inline不会另起一行
+# block（块级元素） 和 inline（内联元素）
+- block : 从上往下流动，会另起一行
+- inline : 从左往右流动，不会另起一行, 直到当前行width满了后自动往下一行溢出。
+  
+html其实并没有分块级元素和内联元素的说法，这些只是某个标签的默认样式，
+你可以通过CSS的display来指定或改变他的样式，从内联变成块级，或者块级变成内联。
+
+- inline-block: 使块级元素变成inline元素的特性。
+
+常用的div就是块级元素block，常用的span就是内联元素inline
+
+# float
+如果某个元素给了float的属性，那么我们需要在它的父元素添加一个clearfix清除它造成的bug，比如一旦后面或者中间有空隙，其他元素就会浮动上来。
+为了防止这个bug，父元素加上以下css
+```css
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+```
+
+#  word-break
+因为一个内联元素的内容有一个很长很长的英文单词，在内容满了后不会自动换行。
+
+- 可以打散英文长单词不换行的bug
+  
+# 关于CSS的height和width
+1. 在不是特殊情况下，不要用height指定一个元素的高度，元素的高度正常让他们的文档流和建议行高决定。
+指定一个height的高度后，可能会造成一些bug。如元素变拥挤。不会响应改变，
+
+2. width最好也不要设置，当一个元素脱离文档流，如把他的display设置为fixed; 那么他的宽度你设置为100%的情况下，还有padding其他属性，那他会溢出屏幕。
+   如果要解决padding造成的溢出的bug，可以用多一个子元素套住父元素包含的所有子元素。父元素不要去设置padding-left或padding-right。

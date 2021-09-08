@@ -42,4 +42,10 @@ a form input button h1 p ul(un-order list 无序列表) ol(order list 有序列�
 
 - 如果form标签内没有type=sumit的input标签时，存在一个Button标签时，会把button标签提升为type=sumit的属性。如果不想button被提升，可以在button标签加个type=button。
 
+# 在html中 所有回车被缩进为一个空格
 
+# div的高度由其内部文档流元素的高度决定。文档流: 文档内元素的流动方向
+
+# span的高度是用建议行高自动赋值的
+- span的高度如果小于div的高度，那么div设置的line-height就有效。否则无效
+- 而div的高度可以通过设置好了line-height后，用padding来控制也可以。

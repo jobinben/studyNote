@@ -9,61 +9,104 @@
 
     <style>
         /* 当子元素设置了float，就要给父元素加上下面这个样式解决css float的bug */
-        .clearfix::after{ /*解决子元素float造成的bug，导致其他元素也浮动上来*/
+        .clearfix::after {
+            /*解决子元素float造成的bug，导致其他元素也浮动上来*/
             content: '';
             display: block;
-            clear:both;
+            clear: both;
         }
-        .navTabs{
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .navTabs {
             margin: 0;
             list-style: none;
             padding: 0;
         }
-        .navTabs > li {
+
+        .navTabs>li {
             float: left;
-            
         }
-        .navTabs > li > a {
-            text-decoration: none;
+
+        .navTabs>li>a {
             margin: 0 17px 0 17px;
             color: #BBB;
             padding: 5px 0 5px 0;
-            display: block; /*a标签和li标签高度不一致，因为a标签是inline元素（内联），把他修改为block元素（块级）*/
+            display: block;
+            /*a标签和li标签高度不一致，因为a标签是inline元素（内联），把他修改为block元素（块级）*/
+            border-top: 3px solid transparent;
             border-bottom: 3px solid transparent;
         }
-        .navTabs > li > a:hover{
-            border-bottom: 3px solid #e06567;
 
+        .navTabs>li>a:hover {
+            border-bottom: 3px solid #e06567;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .topNavBar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .topNavBar .logo {
+            font-size: 24px;
+            font-family: 'Arial Black';
+            padding-top: 3px;
+            padding-left: 15px;
+        }
+
+        .topNavBar .logo .rs {
+            color: #E6686A;
+        }
+
+        .topNavBar .logo .card {
+            color: #9a9da2;
+        }
+
+        .banner {
+            background-image: url(./images/banner.jpg);
+            height: 515px;
         }
     </style>
 </head>
 
 <body>
     <div class="topNavBar clearfix">
-        <a href="#" alt="logo" class="logo" style="float: left;">
-            <span class="rs">RS</span>
-            <span class="card">card</span>
-        </a>
-        <nav class="topNav" style="float: right;">
-            <ul class="navTabs clearfix">
-                <li><a href="">关于</a></li>
-                <li><a href="">技能</a></li>
-                <li><a href="">作品</a></li>
-                <li><a href="">联系</a></li>
-                <li><a href="">博客</a></li>
-            </ul>
-        </nav>
+        <div class="topNavBarInner">
+            <a href="#" alt="logo" class="logo" style="float: left;">
+                <span class="rs">RS</span>
+                <span class="card">card</span>
+            </a>
+            <nav class="topNav" style="float: right;">
+                <ul class="navTabs clearfix">
+                    <li><a href="">关于</a></li>
+                    <li><a href="">技能</a></li>
+                    <li><a href="">作品</a></li>
+                    <li><a href="">联系</a></li>
+                    <li><a href="">博客</a></li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
 
-    <div class="banner" style="background-image: url();"></div>
+    <div class="banner"></div>
 
     <main>
-        
-        <div class="mainCard">
+
+        <div class="card">
             <div class="picture">
                 <img src="" alt="头像">
             </div>
-    
+
             <div class="text">
                 <div class="profile">
                     <span class="welcome">
@@ -83,17 +126,17 @@
                         <dd>18206607341</dd>
                     </dl>
                 </div>
-    
+
                 <footer class="media">
-                    <a href="#"><img src="#" alt="xxx"/></a>
-                    <a href="#"><img src="#" alt="xxx"/></a>
-                    <a href="#"><img src="#" alt="xxx"/></a>
-                    <a href="#"><img src="#" alt="xxx"/></a>
-                    <a href="#"><img src="#" alt="xxx"/></a>
+                    <a href="#"><img src="#" alt="xxx" /></a>
+                    <a href="#"><img src="#" alt="xxx" /></a>
+                    <a href="#"><img src="#" alt="xxx" /></a>
+                    <a href="#"><img src="#" alt="xxx" /></a>
+                    <a href="#"><img src="#" alt="xxx" /></a>
                 </footer>
             </div>
         </div>
-        
+
         <a href="#" class="button">下载 PDF 简历</a>
         <p>
             Jobin, Web前端开发工程师,现在在珠海，曾就职于腾讯隔壁
