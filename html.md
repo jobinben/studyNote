@@ -46,6 +46,10 @@ a form input button h1 p ul(un-order list 无序列表) ol(order list 有序列�
 
 # div的高度由其内部文档流元素的高度决定。文档流: 文档内元素的流动方向
 
-# span的高度是用建议行高自动赋值的
+# span的高度是建议行高自动赋值的
 - span的高度如果小于div的高度，那么div设置的line-height就有效。否则无效
 - 而div的高度可以通过设置好了line-height后，用padding来控制也可以。
+- span是不接受width和height的赋值的。
+
+
+# width和height 可以用padding来代替。

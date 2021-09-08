@@ -70,6 +70,7 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
   clear: both;
 }
 ```
+- 需要设置float的元素，最后最好再用一个div包裹起来，这个div并且给它的增加一个class设置为clearfix
 
 #  word-break
 因为一个内联元素的内容有一个很长很长的英文单词，在内容满了后不会自动换行。
@@ -82,3 +83,11 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
 
 2. width最好也不要设置，当一个元素脱离文档流，如把他的display设置为fixed; 那么他的宽度你设置为100%的情况下，还有padding其他属性，那他会溢出屏幕。
    如果要解决padding造成的溢出的bug，可以用多一个子元素套住父元素包含的所有子元素。父元素不要去设置padding-left或padding-right。
+
+3. max-width: 当窗口宽度小于最大宽度时。可以自适应。用这个代替width。
+
+
+# 关于 position
+- fixed : 相对于窗口定位
+- absolute: 相对于父元素的第一个relative定位。
+

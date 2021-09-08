@@ -16,7 +16,7 @@
             clear: both;
         }
 
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
@@ -52,8 +52,10 @@
         .topNavBar {
             position: fixed;
             top: 0;
-            bottom: 0;
+            left: 0;
             width: 100%;
+            padding: 10px 0;
+            z-index: 1;
         }
 
         .topNavBar .logo {
@@ -74,13 +76,65 @@
         .banner {
             background-image: url(./images/banner.jpg);
             height: 515px;
+            background-position: center center;
+            /* 第一个参数: 水平居中  第二个: 垂直居中*/
+            background-size: cover;
+            /*让图片自动响应缩小盖住div, 这样子可以让图片正常显示*/
+        }
+
+        .banner .mask {
+            height: 515px;
+            background-color: black;
+            opacity: .6;
+        }
+
+        .userCard {
+            max-width: 940px;
+            border: 1px solid red;
+            margin: auto;
+        }
+
+        .text .welcome {
+            background-color: #E6686A;
+            padding: 3px 15px;
+            color: white;
+            line-height: 27px;
+            position: relative;
+        }
+
+        .text .welcome .triangle {
+            /*三角形*/
+            position: absolute;
+            border: 10px solid transparent;
+            border-left-color: #E6686A;
+            border-top-width: 0;
+            top: 100%;
+            left: 4px;
+        }
+
+        .userCard .picture {
+            float: left;
+        }
+
+        .userCard .text {
+            float: left;
+            margin-left: 40px;
+        }
+        .userCard dl dd{
+            color: #BBB;
+            padding: 5px 5px;
+        }
+        .media{
+            background-color: #E6686A;
+            padding:20px  0;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="topNavBar clearfix">
-        <div class="topNavBarInner">
+    <div class="topNavBar">
+        <div class="topNavBarInner clearfix">
             <a href="#" alt="logo" class="logo" style="float: left;">
                 <span class="rs">RS</span>
                 <span class="card">card</span>
@@ -98,19 +152,22 @@
 
     </div>
 
-    <div class="banner"></div>
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
 
     <main>
 
-        <div class="card">
-            <div class="picture">
-                <img src="" alt="头像">
-            </div>
+        <div class="userCard">
+            <div class="pictureAndText clearfix">
+                <div class="picture">
+                    <img src="./images/avatar.jpg" width="299" height="374" alt="头像">
+                </div>
 
-            <div class="text">
-                <div class="profile">
+                <div class="text">
                     <span class="welcome">
-                        Hi
+                        Hi, welcome
+                        <span class="triangle"></span>
                     </span>
                     <h1>余家冰</h1>
                     <p>Web前端开发工程师</p>
@@ -126,15 +183,16 @@
                         <dd>18206607341</dd>
                     </dl>
                 </div>
-
-                <footer class="media">
-                    <a href="#"><img src="#" alt="xxx" /></a>
-                    <a href="#"><img src="#" alt="xxx" /></a>
-                    <a href="#"><img src="#" alt="xxx" /></a>
-                    <a href="#"><img src="#" alt="xxx" /></a>
-                    <a href="#"><img src="#" alt="xxx" /></a>
-                </footer>
             </div>
+
+
+            <footer class="media">
+                <a href="#"><img src="#" alt="xxx" /></a>
+                <a href="#"><img src="#" alt="xxx" /></a>
+                <a href="#"><img src="#" alt="xxx" /></a>
+                <a href="#"><img src="#" alt="xxx" /></a>
+                <a href="#"><img src="#" alt="xxx" /></a>
+            </footer>
         </div>
 
         <a href="#" class="button">下载 PDF 简历</a>
