@@ -91,3 +91,6 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
 - fixed : 相对于窗口定位
 - absolute: 相对于父元素的第一个relative定位。
 
+# 所有非空标签都有伪类(::before, ::after)
+1. 如div button span 
+2. 伪类的初始类型是 内联元素也就是display: inline。 我们可以把他改为块级元素
