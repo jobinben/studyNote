@@ -71,6 +71,9 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
 }
 ```
 - 需要设置float的元素，最后最好再用一个div包裹起来，这个div并且给它的增加一个class设置为clearfix
+1. 为什么给父元素增加after伪类?
+    因为增加一个after伪类后，增加了一个span一样的内联元素，然后把内联元素改为块级元素，这样子后面就会另起一行块级元素，此块级元素width占据100%；
+    从而下面的元素无法再次float浮动上来。
 
 #  word-break
 因为一个内联元素的内容有一个很长很长的英文单词，在内容满了后不会自动换行。
@@ -94,3 +97,23 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
 # 所有非空标签都有伪类(::before, ::after)
 1. 如div button span 
 2. 伪类的初始类型是 内联元素也就是display: inline。 我们可以把他改为块级元素
+
+# 伪类
+
+```css
+div::before{ /*before伪类*/
+    content: '《';
+}
+div::after{ /*after伪类*/
+    content: '》';
+}
+```
+
+```html
+<div>jobing</div>
+```
+
+- output: 《jobing》
+
+1. before伪类和after伪类都是一个内联元素，before伪类可以说其实在div`前面`创建一个span一样的内联元素。
+2. after伪类可以说是在div`后面`创建一个span一样的内联元素。
