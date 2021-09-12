@@ -60,6 +60,7 @@ html其实并没有分块级元素和内联元素的说法，这些只是某个�
 
 常用的div就是块级元素block，常用的span就是内联元素inline
 
+
 # float
 如果某个元素给了float的属性，那么我们需要在它的父元素添加一个clearfix清除它造成的bug，比如一旦后面或者中间有空隙，其他元素就会浮动上来。
 为了防止这个bug，父元素加上以下css
@@ -117,3 +118,11 @@ div::after{ /*after伪类*/
 
 1. before伪类和after伪类都是一个内联元素，before伪类可以说其实在div`前面`创建一个span一样的内联元素。
 2. after伪类可以说是在div`后面`创建一个span一样的内联元素。
+
+
+
+# inline-block
+
+**当一个元素设置为inline-block后，记得再加一条vertical-align: top; 解决多出的一条空隙**
+
+- 设置了inline-block后可以用text-align: center; 就可以把元素居中。

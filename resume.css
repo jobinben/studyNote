@@ -1,0 +1,256 @@
+ /* 当子元素设置了float，就要给父元素加上下面这个样式解决css float的bug */
+ .clearfix::after {
+    /*解决子元素float造成的bug，导致其他元素也浮动上来*/
+    content: '';
+    display: block;
+    clear: both;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #eee;
+}
+
+ol,ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 450;
+}
+
+.navTabs {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.navTabs>li {
+    float: left;
+}
+
+.navTabs>li>a {
+    margin: 0 17px 0 17px;
+    color: #BBB;
+    padding: 5px 0 5px 0;
+    display: block;
+    /*a标签和li标签高度不一致，因为a标签是inline元素（内联），把他修改为block元素（块级）*/
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+.navTabs>li>a:hover {
+    border-bottom: 3px solid #e06567;
+}
+
+a {
+    text-decoration: none;
+}
+
+.topNavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.topNavBar .logo {
+    font-size: 24px;
+    font-family: 'Arial Black';
+    padding-top: 3px;
+    padding-left: 15px;
+}
+
+.topNavBar .logo .rs {
+    color: #E6686A;
+}
+
+.topNavBar .logo .card {
+    color: #9a9da2;
+}
+
+.banner {
+    background-image: url(./images/banner.jpg);
+    height: 515px;
+    background-position: center center;
+    /* 第一个参数: 水平居中  第二个: 垂直居中*/
+    background-size: cover;
+    /*让图片自动响应缩小盖住div, 这样子可以让图片正常显示*/
+}
+
+.banner .mask {
+    height: 515px;
+    background-color: black;
+    opacity: .6;
+}
+
+.userCard {
+    max-width: 940px;
+    background: #fff;
+    margin: auto;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+
+}
+
+.text .welcome {
+    background-color: #E6686A;
+    padding: 3px 15px;
+    color: white;
+    line-height: 27px;
+    position: relative;
+}
+
+.text .welcome .triangle {
+    /*三角形*/
+    position: absolute;
+    border: 10px solid transparent;
+    border-left-color: #E6686A;
+    border-top-width: 0;
+    top: 100%;
+    left: 4px;
+}
+
+.userCard .picture {
+    float: left;
+}
+
+.userCard .text {
+    float: left;
+    margin-left: 40px;
+}
+.userCard dl dd{
+    color: #BBB;
+    padding: 5px 5px;
+}
+.media{
+    background-color: #E6686A;
+    padding:10px  0;
+    text-align: center;
+}
+body > main{
+    margin-top: -340px;
+    position: relative;
+}
+
+main .downloadResume {
+    text-align: center; /*居中方式: 通过里面有文字，然后再包裹一个div 让文字居中，就可以做到居中*/
+}
+
+body > main .button {
+    padding: 20px 40px;
+    border: 1px solid #BBB;
+    border-radius: 4PX;
+    display: inline-block;
+    text-align: center;
+    margin: 32px 0;
+    transition: box-shadow 0.2s;
+}
+
+body > main .button:hover{
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.4);
+}
+.media > a{
+    display: inline-block;
+    border-radius: 50%;
+    padding: 4px;
+    margin: 0 8px;
+}
+.media > a:hover{
+ background: #cf5d5f;
+}
+.icon {
+    width: 32px; 
+    height: 32px;
+    border-radius: 50%;
+    vertical-align: top;
+ }
+
+ main > p {
+     max-width: 940px;
+     margin: auto;
+     text-align: center;
+     line-height: 1.5;
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+
+ section.skills,
+ section.portfolio{
+    max-width: 940px;
+    margin: auto;
+ }
+
+ section.skills > h2,
+ section.portfolio >h2{
+   text-align: center;
+ }
+ 
+ section.skills > ol{
+    background: #fff;
+    padding: 20px;
+ }
+ section.skills > ol >li{
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}   
+section.skills > ol >li:nth-child(even){
+  float: right;
+}  
+section.skills > ol > li > h3{
+    font-size: 14px;
+}
+section.skills > ol > li .progressBar{
+    height: 5px;
+    background: #fae1e1;
+}
+section.skills > ol > li .progress{
+    height: 100%;
+    background: #cf5d5f;
+    width: 80%;
+}
+section.portfolio {
+    text-align: center;
+}
+section.portfolio > nav{
+    text-align: center;
+    display: inline-block;
+}
+section.portfolio > nav > ol {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+}
+
+section.portfolio > nav > ol > li{
+    float: left;
+    margin-left: 20px;
+    cursor: pointer;
+}
+section.portfolio > nav > ol > li:nth-child(1){
+   margin-left: 0px;
+}
+
+section.portfolio > nav .bar{
+    height: 5px;
+    background: #fff;
+}
+section.portfolio > nav .bar .barInner{
+    height: 5px;
+    background: #cf5d5f;
+    transition: all .3s;
+}
+section.portfolio > nav .bar.states-1 .barInner{
+    width: 50px;
+    margin-left: 0;
+}
+section.portfolio > nav .bar.states-2 .barInner{
+    width: 36px;
+    margin-left: 52px;
+}
+section.portfolio > nav .bar.states-3 .barInner{
+    width: 123px;
+    margin-left: 107px;
+}

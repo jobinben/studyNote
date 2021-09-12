@@ -6,155 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
-
-    <style>
-        /* 当子元素设置了float，就要给父元素加上下面这个样式解决css float的bug */
-        .clearfix::after {
-            /*解决子元素float造成的bug，导致其他元素也浮动上来*/
-            content: '';
-            display: block;
-            clear: both;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .navTabs {
-            margin: 0;
-            list-style: none;
-            padding: 0;
-        }
-
-        .navTabs>li {
-            float: left;
-        }
-
-        .navTabs>li>a {
-            margin: 0 17px 0 17px;
-            color: #BBB;
-            padding: 5px 0 5px 0;
-            display: block;
-            /*a标签和li标签高度不一致，因为a标签是inline元素（内联），把他修改为block元素（块级）*/
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-        }
-
-        .navTabs>li>a:hover {
-            border-bottom: 3px solid #e06567;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .topNavBar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 0;
-            z-index: 1;
-        }
-
-        .topNavBar .logo {
-            font-size: 24px;
-            font-family: 'Arial Black';
-            padding-top: 3px;
-            padding-left: 15px;
-        }
-
-        .topNavBar .logo .rs {
-            color: #E6686A;
-        }
-
-        .topNavBar .logo .card {
-            color: #9a9da2;
-        }
-
-        .banner {
-            background-image: url(./images/banner.jpg);
-            height: 515px;
-            background-position: center center;
-            /* 第一个参数: 水平居中  第二个: 垂直居中*/
-            background-size: cover;
-            /*让图片自动响应缩小盖住div, 这样子可以让图片正常显示*/
-        }
-
-        .banner .mask {
-            height: 515px;
-            background-color: black;
-            opacity: .6;
-        }
-
-        .userCard {
-            max-width: 940px;
-            background: #fff;
-            margin: auto;
-            box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
-
-        }
-
-        .text .welcome {
-            background-color: #E6686A;
-            padding: 3px 15px;
-            color: white;
-            line-height: 27px;
-            position: relative;
-        }
-
-        .text .welcome .triangle {
-            /*三角形*/
-            position: absolute;
-            border: 10px solid transparent;
-            border-left-color: #E6686A;
-            border-top-width: 0;
-            top: 100%;
-            left: 4px;
-        }
-
-        .userCard .picture {
-            float: left;
-        }
-
-        .userCard .text {
-            float: left;
-            margin-left: 40px;
-        }
-        .userCard dl dd{
-            color: #BBB;
-            padding: 5px 5px;
-        }
-        .media{
-            background-color: #E6686A;
-            padding:20px  0;
-            text-align: center;
-        }
-        body > main{
-            margin-top: -340px;
-            position: relative;
-        }
-
-        main .downloadResume {
-            text-align: center; /*居中方式: 通过里面有文字，然后再包裹一个div 让文字居中，就可以做到居中*/
-        }
-        
-        body > main .button {
-            padding: 20px 40px;
-            border: 1px solid #BBB;
-            border-radius: 4PX;
-            display: inline-block;
-            text-align: center;
-            margin: 32px 0;
-            transition: box-shadow 0.2s;
-        }
-
-        body > main .button:hover{
-            box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.4);
-        }
-
-    </style>
+    <link rel="stylesheet" href="./resume.css">
 </head>
 
 <body>
@@ -212,11 +64,15 @@
 
 
             <footer class="media">
-                <a href="#"><img src="#" alt="xxx" /></a>
-                <a href="#"><img src="#" alt="xxx" /></a>
-                <a href="#"><img src="#" alt="xxx" /></a>
-                <a href="#"><img src="#" alt="xxx" /></a>
-                <a href="#"><img src="#" alt="xxx" /></a>
+                <a href="javascript:;">
+                    <img class="icon" src="./images/github.png" alt="">
+                </a>
+                <a href="javascript:;">
+                    <img class="icon" src="./images/qq.png" alt="">
+                </a>
+                <a href="javascript:;">
+                    <img class="icon" src="./images/weixin.png" alt="">
+                </a>
             </footer>
         </div>
         <div class="downloadResume">
@@ -229,25 +85,69 @@
         </p>
     </main>
 
-    <section>
+    <section class="skills">
         <h2>技能</h2>
-        <ol>
-            <li>HTML5 &amp; CSS3</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-            <li>Vue</li>
-            <li>React</li>
-            <li>HTTP</li>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML5 &amp; CSS3</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 70%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React</h3>
+                <div class="progressBar">
+                    <div class="progress" ></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </li>
         </ol>
     </section>
-    <section>
+    <section class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生</li>
+                <li id="portfolio_1">所有</li>
+                <li id="portfolio_2">框架</li>
+                <li id="portfolio_3">原生&JavaScript</li>
             </ol>
+            <div id="portfolio_states" class="bar states-1">
+                <div class="barInner"></div>
+            </div>
+            <script>
+                portfolio_1.onclick= function() {
+                    portfolio_states.className = "bar states-1"
+                }
+                portfolio_2.onclick= function() {
+                    portfolio_states.className = "bar states-2"
+                }
+                portfolio_3.onclick= function() {
+                    portfolio_states.className = "bar states-3"
+                }
+            </script>
         </nav>
         <div class="jobs">
             <div class="big"></div>
