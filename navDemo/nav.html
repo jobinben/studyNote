@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>前端导航</title>
+    <link rel="stylesheet" href="./nav.css">
 </head>
 
 <body>
     <div class="header"></div>
-    <main id="mainWrapper"></main>
+    <main>
+        <div id="mainWrapper"></div>
+    </main>
     <footer></footer>
 
 
@@ -30,7 +33,7 @@
             let i = 0
             while (i < keys[index].length) {
                 let kbdx = document.createElement('kbd')
-                kbdx.innerText = keys[index][i]
+                kbdx.textContent = keys[index][i]
                 divWrapper.appendChild(kbdx)
                 i += 1
             }
