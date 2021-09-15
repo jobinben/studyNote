@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端导航</title>
+</head>
+
+<body>
+    <div class="header"></div>
+    <main id="mainWrapper"></main>
+    <footer></footer>
+
+
+    <script>
+        let keys = {
+            0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            2: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+            length: 3
+        }
+
+        let index = 0
+        while (index < keys['length']) {
+            let divWrapper = document.createElement('div')
+            mainWrapper.appendChild(divWrapper)
+
+            let i = 0
+            while (i < keys[index].length) {
+                let kbdx = document.createElement('kbd')
+                kbdx.innerText = keys[index][i]
+                divWrapper.appendChild(kbdx)
+                i += 1
+            }
+            index += 1
+        }
+    </script>
+</body>
+
+</html>
