@@ -31,6 +31,12 @@
             e: 'h5.ele.me'
         }
 
+        let hashInLocalStorage = JSON.parse(localStorage.getItem('localData') || null)
+
+        if(hashInLocalStorage) {
+            hash = hashInLocalStorage
+        }
+
         let index = 0
         while (index < keys['length']) {
             let divWrapper = document.createElement('div')
@@ -40,6 +46,15 @@
             while (i < keys[index].length) {
                 let kbdx = document.createElement('kbd')
                 kbdx.textContent = keys[index][i]
+                let btn = document.createElement('button')
+                btn.id = keys[index][i]
+                btn.textContent = '编辑'
+                btn.onclick = function(e) {
+                    let key = e.target.id
+                    hash[key] = prompt('输入您的域名: ') || hash[key]
+                    localStorage.setItem('localData', JSON.stringify(hash))
+                }
+                kbdx.appendChild(btn)
                 divWrapper.appendChild(kbdx)
                 i += 1
             }
