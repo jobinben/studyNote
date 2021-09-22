@@ -45,6 +45,14 @@
             }
             index += 1
         }
+
+        document.onkeypress = function(e) {
+            let key = e.key
+            if(hash[key]) {
+                window.open(`http://${hash[key]}`, '_blank')
+            }
+            console.log('url:', hash[key])
+        }
     </script>
 </body>
 
