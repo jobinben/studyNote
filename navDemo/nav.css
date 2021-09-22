@@ -42,9 +42,7 @@ kbd:hover > button {
 }
 
 #mainWrapper > div:nth-child(2) {
-    margin-left: 1em;
 }
 
 #mainWrapper > div:nth-child(3) {
-    margin-left: 2em;
 }
