@@ -11,10 +11,9 @@ main {
 
 kbd{
     border: 1px solid #bbb;
-    padding: 1em;
     text-transform: uppercase;
     display: inline-block;
-    cursor: pointer;
+    margin: 0 10px;
     position:relative;
 }
 
@@ -23,12 +22,13 @@ kbd > button {
     bottom: 0;
     right: 0;
     display: none;
-    
+    cursor: pointer;
 }
 
 kbd:hover > button {
     display: inline-block;
 }
+
 
 #mainWrapper > div > kbd:first-child{
     border-top-left-radius: 4px;
@@ -42,7 +42,28 @@ kbd:hover > button {
 }
 
 #mainWrapper > div:nth-child(2) {
+    margin-left: -38px;
 }
 
 #mainWrapper > div:nth-child(3) {
+    margin-left: -112px;
+}
+
+#mainWrapper .row {
+    margin: 20px 0;
+}
+
+
+.keyStyle{
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #292929 0%,#111111 100%); 
+	border: 1px solid #373737; color: #C5C5C5; 
+    border-radius: 6px; 
+	box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808; 
+	font-size: 16px; 
+    font-family: Helvetica;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }

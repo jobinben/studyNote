@@ -40,12 +40,14 @@
         let index = 0
         while (index < keys['length']) {
             let divWrapper = document.createElement('div')
+            divWrapper.className = "row"
             mainWrapper.appendChild(divWrapper)
 
             let i = 0
             while (i < keys[index].length) {
                 let kbdx = document.createElement('kbd')
                 kbdx.textContent = keys[index][i]
+                kbdx.className = "keyStyle"
                 let btn = document.createElement('button')
                 btn.id = keys[index][i]
                 btn.textContent = '编辑'
