@@ -1,12 +1,20 @@
 body{
     margin: 0;
     padding: 0;
+    background: grey url(../images/wall.png) no-repeat center center;
+    background-size: cover;
 }
 main {
     text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #mainWrapper{
     display: inline-block;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 4px;
 }
 
 kbd{
