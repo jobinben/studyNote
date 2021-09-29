@@ -11,10 +11,11 @@ let hash = {
     e: 'h5.ele.me',
     n: 'nowcoder.com',
     y: 'yuque.com/changyanwei-wlmrd/rbxc2v/bobswg',
-    s: 'nowcoder.com/ta/coding-interviews',
+    m: 'nowcoder.com/ta/coding-interviews',
     g: 'gaitubao.com',
     r: 'ruike1.com',
-    t: 'tuyoung.top'
+    t: 'tuyoung.top',
+    s: 'sm.ms'
 }
 
 let hashInLocalStorage = JSON.parse(localStorage.getItem('localData') || null)
@@ -32,7 +33,15 @@ while (index < keys['length']) {
     let i = 0
     while (i < keys[index].length) {
         let kbdx = document.createElement('kbd')
-        kbdx.textContent = keys[index][i]
+        let span = document.createElement('span')
+        let img = document.createElement('img')
+        let textKey = keys[index][i]
+        if(hash[textKey]) {
+            img.src = `http://${hash[textKey]}/favicon.ico`
+        } else {
+            img.src = "//sm.ms/image/MhWi3CBnrYG4Hlb"
+        }
+        span.textContent = textKey
         kbdx.className = "keyStyle"
         let btn = document.createElement('button')
         btn.id = keys[index][i]
@@ -42,6 +51,9 @@ while (index < keys['length']) {
             hash[key] = prompt('输入您的域名: ') || hash[key]
             localStorage.setItem('localData', JSON.stringify(hash))
         }
+
+        kbdx.appendChild(span)
+        kbdx.appendChild(img)
         kbdx.appendChild(btn)
         divWrapper.appendChild(kbdx)
         i += 1
