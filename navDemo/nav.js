@@ -10,7 +10,6 @@ let hash = {
     w: '52pojie.cn',
     e: 'h5.ele.me',
     n: 'nowcoder.com',
-    y: 'yuque.com/changyanwei-wlmrd/rbxc2v/bobswg',
     m: 'nowcoder.com/ta/coding-interviews',
     g: 'gaitubao.com',
     r: 'ruike1.com',
@@ -39,7 +38,11 @@ while (index < keys['length']) {
         if(hash[textKey]) {
             img.src = `http://${hash[textKey]}/favicon.ico`
         } else {
-            img.src = "//sm.ms/image/MhWi3CBnrYG4Hlb"
+            img.src = "https://i.loli.net/2021/09/29/MhWi3CBnrYG4Hlb.png"
+        }
+        // 当图片请求失败
+        img.onerror = function(e) {
+            e.target.src = 'https://i.loli.net/2021/09/29/MhWi3CBnrYG4Hlb.png'
         }
         span.textContent = textKey
         kbdx.className = "keyStyle"
