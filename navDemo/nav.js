@@ -22,12 +22,37 @@ function createTag(tagName, attribute = {}) {
     return element
 }
 
+
+const initImageUrl = 'https://i.loli.net/2021/09/29/MhWi3CBnrYG4Hlb.png'
+
 // 编辑域名
 function editDomain(e) {
     let key = e.target.id
     hash[key] = prompt('输入您的域名: ') || hash[key]
     localStorage.setItem('localData', JSON.stringify(hash))
+    // 获取button同胞的上一个元素
+    let preImage = e.target.previousSibling
+    preImage.src = `http://${hash[key]}/favicon.ico`
+    preImage.onerror =function(e) {
+        e.target.src = initImageUrl
+    }
 }
+
+// 添加Icon图片
+function createImg(domain) {
+    let img = createTag('img')
+    if(domain) {
+        img.src = `http://${domain}/favicon.ico`
+    } else {
+        img.src = initImageUrl
+    }
+    // 当图片请求失败
+    img.onerror = function(e) {
+        e.target.src = initImageUrl
+    }
+    return img
+}
+
 
 
 // 1. 初始化数据
@@ -57,39 +82,27 @@ if (hashInLocalStorage) {
 }
 
 
+
+
 // 2. 生成键盘
-let index = 0
-while (index < keys['length']) {
+for(let index = 0; index < keys['length']; index++) {
     let divWrapper = createTag('div', {className: 'row'})
     mainWrapper.appendChild(divWrapper)
-
-    let i = 0
-    while (i < keys[index].length) {
+    for(let i = 0; i < keys[index].length; i++) {
         let textKey = keys[index][i]
         let kbdx = createTag('kbd', {className: 'keyStyle'})
-        let span = createTag('span', {textContent: textKey})
-        let img = createTag('img')
-        
-        if(hash[textKey]) {
-            img.src = `http://${hash[textKey]}/favicon.ico`
-        } else {
-            img.src = "https://i.loli.net/2021/09/29/MhWi3CBnrYG4Hlb.png"
-        }
-        // 当图片请求失败
-        img.onerror = function(e) {
-            e.target.src = 'https://i.loli.net/2021/09/29/MhWi3CBnrYG4Hlb.png'
-        }
-
         let btn = createTag('button', {id: textKey, textContent: '编辑', onclick: editDomain})
+        let span = createTag('span', {textContent: textKey})
+
+        let img = createImg(hash[textKey])
 
         kbdx.appendChild(span)
         kbdx.appendChild(img)
         kbdx.appendChild(btn)
         divWrapper.appendChild(kbdx)
-        i += 1
     }
-    index += 1
 }
+
 
 document.onkeypress = function (e) {
     let key = e.key
