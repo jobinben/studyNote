@@ -83,7 +83,8 @@ function initData() {
         g: 'gaitubao.com',
         r: 'ruike1.com',
         t: 'tuyoung.top',
-        s: 'sm.ms'
+        s: 'sm.ms',
+        a: 'snippet-generator.app'
     }
     let hashInLocalStorage = getFromLocalStorage('localData')
     if (hashInLocalStorage) {
