@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #BBB;
+            background-color: #fff;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container > .logo {
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+            background-color: #BBB;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .container > .logo::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 40px;
+            background-color: #fff;
+            left: 42px;
+            top: 15px;
+        }
+
+        .container > .logo::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 15px;
+            background-color: #fff;
+            left: 42px;
+            top: 45px;
+        }
+
+        .container > .line{
+            margin-top: 20px;
+            width: 150px;
+            height: 2px;
+            background-color: #bbb;
+        }
+
+        .container > .showTimer{
+            margin-top: 75px;
+            width: 300px;
+            height: 100px;
+            font-size: 36px;
+            color: black;
+            text-align: center;
+            border: 1px solid #BBB;
+            border-radius: 4px;
+            line-height: 100px;
+        }
+        .container > .control {
+            margin-top: 80px;
+            width: 100%;
+            position: relative;
+        }
+        .container > .control .stopBtn{
+            left: 80px;
+        }
+        .container > .control .startBtn{
+            right: 80px;
+
+        }
+        .container > .control .stopBtn,
+        .container > .control .startBtn{
+            position: absolute;
+            width: 80px;
+            height: 32px;
+            background: #fff;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+        }
+        .container > .control .stopBtn:hover,
+        .container > .control .startBtn:hover{
+            cursor: pointer;
+            border: 1px solid black;
+        }
+        .container > .control .stopBtn:active,
+        .container > .control .startBtn:active{
+            background-color: #eee;
+        }
+
+        #app > .toast {
+            display: inline-block;
+            border-radius: 4px;
+            border: 1px solid #bbb;
+            padding: 20px;
+            font-size: 32px;
+            background-color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="logo"></div>
+            <div class="line"></div>
+            <input class="showTimer" name="inputTimer" value="00:00:00">
+            <div class="control">
+                <button type="button" id="stopBtn" class="stopBtn">Stop</button>
+                <button type="button" id="startBtn" class="startBtn">Start</button>
+            </div>
+        </div>
+
+        <div class="toast">对话框</div>
+    </div>
+
+    
+
+    <script>
+
+        // confirm 这个对话框被点击后, 后面的脚本才会运行。 正常不要使用它
+        
+        let inputElement = document.querySelector('input')
+        let startBtn = document.getElementById('startBtn')
+        let timer = null
+        console.log(inputElement.value)
+        inputElement.onchange = (e) => {
+            console.log(e.target.value)
+        }
+        startBtn.onclick = (e) => {
+            if(timer) {
+                confirm('已经开始倒计时啦')
+                return
+            }
+            let count = inputElement.value.split(':')
+            if(count.length === 3 && !isNaN(+count.join(''))){
+                let hour = +count[0]
+                let minute = +count[1]
+                let second = +count[2]
+                let sum = hour * 3600 + minute * 60 + second
+                run(sum, hour, minute, second)
+            } else {
+                confirm('请注意时间格式')
+                return
+            }
+
+        }
+
+        function run(count, h, m, s) {
+            if(count <= 0) {
+                timer = null
+                return;
+            }
+            // 01:02:03
+            timer = setTimeout(() => {
+                if(s > 0) {
+                    s = s - 1
+                } else {
+                    if(m > 0) {
+                        m = m - 1;
+                        s = 59
+                    }else {
+                        h = h - 1;
+                        m = 59;
+                        s = 59;
+                    }
+                }
+                let str = `${format(h)}:${format(m)}:${format(s)}`
+                inputElement.value = str
+                run(count-1, h, m, s)
+            }, 1000)
+        }
+
+        function format(num) {
+            return num < 10 ? '0' + num : '' + num
+        }
+     
+    </script>
+</body>
+
+</html>
