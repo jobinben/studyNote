@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画板</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #cvs{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="1000" height="500"></canvas>
+
+    <script>
+        let drawFlag = false
+        let el = document.getElementById('cvs')
+        let ctx = el.getContext('2d');
+
+        let {lastPoint} = {x: undefined, y: undefined}
+
+        el.onmousedown = function(e) {
+            let x = e.clientX,
+                y = e.clientY;
+            drawCircle(x, y, 5)
+            drawFlag = true
+            lastPoint = {x, y}
+
+        }
+
+        el.onmousemove = function(e) {
+            if(drawFlag) {
+                let x = e.clientX,
+                    y = e.clientY;
+                drawCircle(x, y, 5)
+                let curPoint = {x, y}
+                drawLine(lastPoint.x, lastPoint.y, curPoint.x, curPoint.y)
+                lastPoint = curPoint // 起点等于上一次的终点
+            }
+        }
+
+        el.onmouseup = function(e) {
+            drawFlag = false
+        }
+
+        function drawCircle(x, y, radius) {
+            ctx.beginPath()
+            ctx.fillStyle = 'yellow'
+            ctx.arc(x, y, radius, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.closePath()
+        }
+        function drawLine(x, y, x2, y2) {
+            ctx.beginPath()
+            ctx.strokeStyle = 'red'
+            ctx.moveTo(x, y) // 起点
+            ctx.lineWidth = 5
+            ctx.lineTo(x2, y2) //终点
+            ctx.stroke() // 描线
+            ctx.closePath()
+        }
+    </script>
+</body>
+</html>
