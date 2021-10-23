@@ -1,60 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>画板</title>
     <style>
-        body{
+        body {
             margin: 0;
         }
-        #cvs{
+
+        #cvs {
             background-color: green;
+        }
+
+        #eraser {
+            display: inline-block;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
+
 <body>
     <canvas id="cvs" width="1000" height="500"></canvas>
+
+    <button id="eraser">橡皮擦</button>
 
     <script>
         let drawFlag = false
         let el = document.getElementById('cvs')
         let ctx = el.getContext('2d');
+        let eraserEnabled = false // 是否开启橡皮擦
+        let eraserArea = 5 // 橡皮擦面积
 
-        let {lastPoint} = {x: undefined, y: undefined}
+        // 自动设置画布宽高
+        autosetCanvasSize(el)
+        // 监听鼠标
+        listenMouse(el, ctx)
+        // 监听工具
+        listenTool()
 
-        el.onmousedown = function(e) {
-            let x = e.clientX,
-                y = e.clientY;
-            drawCircle(x, y, 5)
-            drawFlag = true
-            lastPoint = {x, y}
 
-        }
 
-        el.onmousemove = function(e) {
-            if(drawFlag) {
-                let x = e.clientX,
-                    y = e.clientY;
-                drawCircle(x, y, 5)
-                let curPoint = {x, y}
-                drawLine(lastPoint.x, lastPoint.y, curPoint.x, curPoint.y)
-                lastPoint = curPoint // 起点等于上一次的终点
+        function listenTool() {
+            eraser.onclick = function () {
+                eraserEnabled = !eraserEnabled
             }
         }
 
-        el.onmouseup = function(e) {
-            drawFlag = false
+        function listenMouse(canvas, ctx) {
+            let { lastPoint } = { x: undefined, y: undefined }
+            // 按下鼠标
+            el.onmousedown = function (e) {
+                let x = e.clientX,
+                    y = e.clientY;
+                drawFlag = true
+                lastPoint = { x, y }
+                if (eraserEnabled) {
+                    ctx.clearRect(x, y, eraserArea, eraserArea)
+                    return;
+                }
+                drawCircle(x, y, 2) // 加上圆可以盖掉裂缝
+            }
+            // 移动鼠标
+            el.onmousemove = function (e) {
+                let x = e.clientX,
+                    y = e.clientY;
+                if (eraserEnabled && drawFlag) {
+                    ctx.clearRect(x, y, eraserArea, eraserArea)
+                    return;
+                }
+                if (drawFlag) {
+                    drawCircle(x, y, 2) // 加上圆可以盖掉裂缝
+                    let curPoint = { x, y }
+                    drawLine(lastPoint.x, lastPoint.y, curPoint.x, curPoint.y)
+                    lastPoint = curPoint // 起点等于上一次的终点
+                }
+            }
+            // 抬起鼠标
+            el.onmouseup = function (e) {
+                drawFlag = false
+            }
         }
 
         function drawCircle(x, y, radius) {
             ctx.beginPath()
-            ctx.fillStyle = 'yellow'
+            ctx.fillStyle = 'red'
             ctx.arc(x, y, radius, 0, Math.PI * 2)
             ctx.fill()
             ctx.closePath()
         }
+
         function drawLine(x, y, x2, y2) {
             ctx.beginPath()
             ctx.strokeStyle = 'red'
@@ -64,6 +103,21 @@
             ctx.stroke() // 描线
             ctx.closePath()
         }
+
+        function autosetCanvasSize(canvas) {
+            function setCanvasSize() {
+                let pageWidth = document.documentElement.clientWidth;
+                let pageHeight = document.documentElement.clientHeight
+                canvas.width = pageWidth
+                canvas.height = pageHeight
+            }
+            setCanvasSize() // 设置canvas宽高
+            window.onresize = function () { // 页面被放大缩小时更新
+                setCanvasSize()
+            }
+        }
+
     </script>
 </body>
+
 </html>
