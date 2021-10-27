@@ -1,15 +1,10 @@
-body {
+* {
     margin: 0;
     padding: 0;
 }
 
 ol, ul {
     list-style: none;
-}
-
-#cvs {
-    padding: 0;
-    margin: 0;
 }
 
 #eraser,
@@ -38,5 +33,31 @@ ol {
     position: fixed;
     top: 100px;
     left: 20px;
+}
+
+ol > li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+ol > li.red {
+    background: red;
+}
+
+ol > li.green {
+    background: green;
+}
+
+ol > li.blue {
+    background: blue;
+}
+
+ol > li.active {
+    transform: scale(1.2);
 }
 

@@ -8,6 +8,8 @@ let eraserArea = 5 // 橡皮擦面积
 autosetCanvasSize(el)
 // 检查终端
 checkFeature()
+// 初始化画笔颜色
+initPenColor()
 // 监听工具
 listenTool()
 
@@ -27,6 +29,10 @@ function checkFeature() {
 }
 
 
+function initPenColor() {
+    ctx.fillStyle = 'red'
+    ctx.strokeStyle = 'red'
+}
 
 function listenTool() {
     eraser.onclick = function () {
@@ -40,6 +46,29 @@ function listenTool() {
         pen.classList.add('active')
         eraser.classList.remove('active')
     }
+
+    red.onclick = function(){
+        ctx.fillStyle = 'red'
+        ctx.strokeStyle = 'red'
+        red.classList.add('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+    }
+    green.onclick = function(){
+        ctx.fillStyle = 'green'
+        ctx.strokeStyle = 'green'
+        green.classList.add('active')
+        red.classList.remove('active')
+        blue.classList.remove('active')
+    }
+    blue.onclick = function(){
+        ctx.fillStyle = 'blue'
+        ctx.strokeStyle = 'blue'
+        blue.classList.add('active')
+        red.classList.remove('active')
+        green.classList.remove('active')
+    }
+
 }
 
 function listenTouch(canvas, ctx){
@@ -114,7 +143,6 @@ function listenMouse(canvas, ctx) {
 
 function drawCircle(x, y, radius) {
     ctx.beginPath()
-    ctx.fillStyle = 'red'
     ctx.arc(x, y, radius, 0, Math.PI * 2)
     ctx.fill()
     ctx.closePath()
@@ -122,7 +150,6 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x, y, x2, y2) {
     ctx.beginPath()
-    ctx.strokeStyle = 'red'
     ctx.moveTo(x, y) // 起点
     ctx.lineWidth = 5
     ctx.lineTo(x2, y2) //终点
