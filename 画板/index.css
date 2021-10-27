@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+body {
+    /* 禁用滚动 */
+    overflow: hidden; 
+}
+
 ol, ul {
     list-style: none;
 }
