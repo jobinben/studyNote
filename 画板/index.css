@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+#cvs {
+    padding: 0;
+    margin: 0;
+}
+
+#eraser,
+#pen {
+    display: inline-block;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 80px;
+    height: 32px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#eraser{
+    left: 120px;
+}
+#eraser.active,
+#pen.active{
+    background-color: #2080f0;
+    color: #fff;
+}
+
+ol {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+}
+
