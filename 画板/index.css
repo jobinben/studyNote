@@ -13,11 +13,11 @@ ol, ul {
 }
 
 #eraser,
-#pen {
+#pen,
+#saveBtn {
     display: inline-block;
     position: fixed;
     top: 10px;
-    left: 20px;
     width: 80px;
     height: 32px;
     border: 1px solid #bbb;
@@ -27,6 +27,16 @@ ol, ul {
 }
 #eraser{
     left: 120px;
+}
+#pen {
+    left: 20px;
+}
+#saveBtn {
+    left: 220px;
+}
+#saveBtn:active {
+    background-color: #2080f0;
+    color: #fff;
 }
 #eraser.active,
 #pen.active{

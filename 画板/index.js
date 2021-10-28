@@ -69,6 +69,16 @@ function listenTool() {
         green.classList.remove('active')
     }
 
+    saveBtn.onclick = function() {
+        let aEl = document.createElement('a')
+        let url = el.toDataURL('image/png')
+        document.body.appendChild(aEl)
+        aEl.href = url
+        aEl.download = '我的Canvas'
+        aEl.target = "_blank"
+        aEl.click()
+    }
+
 }
 
 function listenTouch(canvas, ctx){
