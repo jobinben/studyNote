@@ -33,7 +33,7 @@
     <div id='siteWelcome' class="site-welcome active">
         <div class="loading"></div>
     </div>
-    <div class="topNavBar">
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBarInner clearfix">
             <a href="#" alt="logo" class="logo" style="float: left;">
                 <span class="rs">RS</span>
@@ -41,11 +41,18 @@
             </a>
             <nav class="topNav" style="float: right;">
                 <ul class="navTabs clearfix">
-                    <li><a href="">关于</a></li>
-                    <li><a href="">技能</a></li>
-                    <li><a href="">作品</a></li>
-                    <li><a href="">联系</a></li>
-                    <li><a href="">博客</a></li>
+                    <li class="menuTigger"><a href="javascript:;">关于</a></li>
+                    <li class="menuTigger"><a href="javascript:;">技能</a></li>
+                    <li class="menuTigger">
+                        <a href="javascript:;">作品</a>
+                        <ul class="subMenus">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="menuTigger"><a href="javascript:;">联系</a></li>
+                    <li class="menuTigger"><a href="javascript:;">博客</a></li>
                 </ul>
             </nav>
         </div>
@@ -185,13 +192,7 @@
         </div>
     </section>
 
-
-    <script>
-        // 页面加载完成
-        setTimeout(() => {
-            siteWelcome.classList.remove('active');
-        }, 1000);
-    </script>
+    <script src="./resume.js"></script>
 </body>
 
 </html>
