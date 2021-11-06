@@ -7,9 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
     <link rel="stylesheet" href="./resume.css">
+    <link rel="stylesheet" href="./loading.css">
+
+    <style>
+        .site-welcome {
+            display: none;
+            position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .site-welcome.active{
+            display: flex;
+        }
+    </style>
 </head>
 
 <body>
+    <div id='siteWelcome' class="site-welcome active">
+        <div class="loading"></div>
+    </div>
     <div class="topNavBar">
         <div class="topNavBarInner clearfix">
             <a href="#" alt="logo" class="logo" style="float: left;">
@@ -115,7 +138,7 @@
             <li>
                 <h3>React</h3>
                 <div class="progressBar">
-                    <div class="progress" ></div>
+                    <div class="progress"></div>
                 </div>
             </li>
             <li>
@@ -138,13 +161,13 @@
                 <div class="barInner"></div>
             </div>
             <script>
-                portfolio_1.onclick= function() {
+                portfolio_1.onclick = function () {
                     portfolio_states.className = "bar states-1"
                 }
-                portfolio_2.onclick= function() {
+                portfolio_2.onclick = function () {
                     portfolio_states.className = "bar states-2"
                 }
-                portfolio_3.onclick= function() {
+                portfolio_3.onclick = function () {
                     portfolio_states.className = "bar states-3"
                 }
             </script>
@@ -161,6 +184,14 @@
             </div>
         </div>
     </section>
+
+
+    <script>
+        // 页面加载完成
+        setTimeout(() => {
+            siteWelcome.classList.remove('active');
+        }, 1000);
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,40 @@
+/* loadding 加载动画 */
+.loading{
+    height: 200px;
+    width: 200px;
+    position: relative;
+  }
+  .loading::before,
+  .loading::after{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: gray;
+    border-radius: 50%;
+    margin: auto;
+    animation: fadeInOut 1s linear infinite;
+  }
+  
+  .loading::after{
+    animation-delay: .5s;
+  }
+  
+  
+  @keyframes fadeInOut{
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 1;
+    }
+    
+    100% {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+  }
