@@ -55,6 +55,18 @@ h1, h2, h3, h4 {
     animation: borderSlide .3s;
 }
 
+.navTabs>li.active>.subMenus{
+    animation: submenuSlide .2s;
+}
+
+@keyframes submenuSlide{
+    0% {
+        margin-right: 100%;
+    }
+    100% {
+        margin-right: 0%;
+    }
+}
 
 @keyframes borderSlide {
     0% {
@@ -73,10 +85,12 @@ h1, h2, h3, h4 {
     right: 0;
     background: #fff;
     margin-top: 3px;
+    color: #3d4451;
 }
 
 .navTabs li.active > .subMenus{
     display: block;
+    cursor: pointer;
 }
 .navTabs .subMenus > li {
     white-space: nowrap;
@@ -101,6 +115,9 @@ a {
 .topNavBar.active{
     background: #fff;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.4);
+}
+.topNavBar.active .navTabs li > a {
+    color: #3d4451;
 }
 
 .topNavBar .logo {
